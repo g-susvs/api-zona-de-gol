@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { dbConnection } = require("../database/config");
 
 class Server {
   constructor() {
@@ -17,18 +18,19 @@ class Server {
   }
 
   async conectarDB() {
-    // await dbConnection();
+    await dbConnection();
   }
 
   middlewares() {
     this.app.use(cors());
     this.app.use(express.json());
+    this.app.use(express.static("public"));
   }
 
   routes() {
     // rutas usuarios
     // rutas canchas
-    // rutas reservas
+    this.app.use(this.paths.reservas, require("../routes/reserva"));
     this.app.get("/", (req, res) => {
       res.send("ZONA DE GOL - API");
     });
