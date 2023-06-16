@@ -2,12 +2,23 @@ const Reserva = require("../models/reserva");
 
 const getReservaPorId = async (req, res) => {
   const { id } = req.params;
-  const reserva = await Reserva.findById(id);
-
-  return res.status(200).json({
-    msg: "Reserva por id",
-    reserva,
-  });
+  try {
+    const reserva = await Reserva.findById(id);
+    if (!reserva) {
+      return res.status(404).json({
+        msg: "Not found",
+      });
+    }
+    return res.status(200).json({
+      msg: "Reserva por id",
+      reserva,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error,
+    });
+  }
 };
 
 const crearReserva = async (req, res) => {
@@ -28,8 +39,9 @@ const crearReserva = async (req, res) => {
       reserva,
     });
   } catch (error) {
-    console.log(error);
-    return;
+    return res.status(500).json({
+      error,
+    });
   }
 };
 

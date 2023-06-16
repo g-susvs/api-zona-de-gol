@@ -5,35 +5,35 @@ const ReservaSchema = new Schema({
     // type: Schema.Types.ObjectId,
     // ref: "Usuario",
     type: String,
-    require: true,
+    required: true,
   },
   cancha_id: {
     // type: Schema.Types.ObjectId,
     // ref: "Cancha",
     type: String,
-    require: true,
+    required: true,
   },
   fechaMilsec: {
     type: Number,
-    require: true,
+    required: true,
   },
   fecha: {
     type: String,
   },
   duracion: {
     type: Number, // 60 - 90 -120
-    require: true,
+    required: true,
   },
   exp: {
     type: String,
   },
   ubicacion: {
     type: String,
-    require: true,
+    required: true,
   },
   estado_de_reserva: {
     type: String, // pendiente - confirmado - cancelado
-    require: true,
+    required: true,
   },
 });
 

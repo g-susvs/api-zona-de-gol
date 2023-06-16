@@ -10,6 +10,7 @@ class Server {
       usurios: "/api/usuarios",
       canchas: "/api/canchas",
       reservas: "/api/reservas",
+      pagos: "/api/pagos",
     };
 
     this.conectarDB();
@@ -31,6 +32,7 @@ class Server {
     // rutas usuarios
     // rutas canchas
     this.app.use(this.paths.reservas, require("../routes/reserva"));
+    this.app.use(this.paths.pagos, require("../routes/pago"));
     this.app.get("/", (req, res) => {
       res.send("ZONA DE GOL - API");
     });
