@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { generarPago, verPago } = require("../controllers/pago");
-const { body, validationResult, param } = require("express-validator");
+const { body, validationResult, param, header } = require("express-validator");
 
 const router = Router();
 
@@ -13,10 +13,9 @@ router.get(
 router.post(
   "/",
   [
-    // validar jwt - para identificar al usuario
-    // De momento por el body por que no esta el servicio de usuario
-    // body("usuario_id", "El id no es valido").isMongoId(),
-    body("usuario_id", "El id no es valido").notEmpty(),
+    // TODO validar jwt - para identificar al usuario
+    // De momento por el header por que no esta el servicio de usuario
+    header("id", "El id no es valido").isMongoId(),
     body("reserva_id", "El id no es valido").isMongoId(),
     body("monto", "El monto es requerido").isNumeric(),
     validarCampos,

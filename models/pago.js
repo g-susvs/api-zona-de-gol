@@ -2,8 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const PagoSchema = new Schema({
   usuario_id: {
-    // type: Schema.Types.ObjectId
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "Usuario",
     required: true,
   },
   reserva_id: {

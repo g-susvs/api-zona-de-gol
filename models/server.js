@@ -26,6 +26,7 @@ class Server {
     this.app.use(cors());
     this.app.use(express.json());
     this.app.use(express.static("public"));
+    this.app.set("view engine", "hbs");
   }
 
   routes() {
@@ -36,6 +37,10 @@ class Server {
     this.app.use(this.paths.pagos, require("../routes/pago"));
     this.app.get("/", (req, res) => {
       res.send("ZONA DE GOL - API");
+    });
+
+    this.app.get("/pago", (req, res) => {
+      res.render("pago");
     });
   }
 
