@@ -1,23 +1,34 @@
 {
-  "name": "zona_de_gol-api",
-  "version": "1.0.0",
-  "description": "Zona de gol es un sitio web diseñado para satisfacer las necesidades de los amantes del fútbol.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://71582036@dev.azure.com/71582036/ZONA%20DE%20GOL/_git/ZONA%20DE%20GOL%20-%20API"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.1.4",
-    "express": "^4.18.2",
-    "mongoose": "^7.2.4"
-  }
+	"name": "zona_de_gol-api",
+	"version": "1.0.0",
+	"description": "Zona de gol es un sitio web diseñado para satisfacer las necesidades de los amantes del fútbol.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node index.js",
+		"format": "prettier --write .",
+		"lint": "eslint --fix . --ext .js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://71582036@dev.azure.com/71582036/ZONA%20DE%20GOL/_git/ZONA%20DE%20GOL%20-%20API"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^16.1.4",
+		"express": "^4.18.2",
+		"mongoose": "^7.2.4"
+	},
+	"devDependencies": {
+		"eslint": "^8.43.0",
+		"eslint-config-prettier": "^8.8.0",
+		"eslint-config-standard": "^17.1.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-n": "^16.0.0",
+		"eslint-plugin-promise": "^6.1.1",
+		"prettier": "^2.8.8"
+	}
 }
