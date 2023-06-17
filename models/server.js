@@ -5,9 +5,9 @@ const { dbConnection } = require("../database/config");
 class Server {
   constructor() {
     this.app = express();
-    this.port = process.env.PORT || 3000;
+    this.port = process.env.PORT || 3001;
     this.paths = {
-      usurios: "/api/usuarios",
+      usuarios: "/api/usuarios",
       canchas: "/api/canchas",
       reservas: "/api/reservas",
       pagos: "/api/pagos",
@@ -30,6 +30,7 @@ class Server {
 
   routes() {
     // rutas usuarios
+    this.app.use(this.paths.usuarios, require("../routes/usuario"));
     // rutas canchas
     this.app.use(this.paths.reservas, require("../routes/reserva"));
     this.app.use(this.paths.pagos, require("../routes/pago"));
