@@ -11,5 +11,7 @@ module.exports = {
 	},
 	rules: {
 		'no-unused-vars': 'warn',
+		'prefer-promise-reject-errors': 'off',
+		camelcase: 'off',
 	},
 };
