@@ -2,9 +2,8 @@ const { Schema, model } = require('mongoose');
 
 const ReservaSchema = new Schema({
 	usuario_id: {
-		// type: Schema.Types.ObjectId,
-		// ref: "Usuario",
-		type: String,
+		type: Schema.Types.ObjectId,
+		ref: 'Usuario',
 		required: true,
 	},
 	cancha_id: {
@@ -26,10 +25,6 @@ const ReservaSchema = new Schema({
 	},
 	exp: {
 		type: String,
-	},
-	ubicacion: {
-		type: String,
-		required: true,
 	},
 	estado_de_reserva: {
 		type: String, // pendiente - confirmado - cancelado

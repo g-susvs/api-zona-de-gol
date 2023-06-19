@@ -19,8 +19,8 @@ const verPago = async (req, res = response) => {
 			});
 		}
 		// return res.status(200).json({
-		//   msg: "Pago realizado",
-		//   pago,
+		// 	msg: 'Pago realizado',
+		// 	pago,
 		// });
 
 		// Vista con handlebars
@@ -46,8 +46,7 @@ const verPago = async (req, res = response) => {
 const generarPago = async (req = request, res) => {
 	const body = req.body;
 
-	// TODO: se obtiene del JWT
-	const { id } = req.headers;
+	const { id } = req.usuario;
 
 	try {
 		const pago = new Pago(body);

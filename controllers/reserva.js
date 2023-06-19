@@ -1,12 +1,19 @@
 const Reserva = require('../models/reserva');
 
 const getReservaPorId = async (req, res) => {
-	const { id } = req.params;
+	const { id: idReserva } = req.params;
+	const { id: idUsuario } = req.usuario;
+
 	try {
-		const reserva = await Reserva.findById(id);
+		const reserva = await Reserva.findById(idReserva).populate('usuario_id');
 		if (!reserva) {
 			return res.status(404).json({
 				msg: 'Not found',
+			});
+		}
+		if (reserva.usuario_id.id !== idUsuario) {
+			return res.status(403).json({
+				msg: 'No autorizado',
 			});
 		}
 		return res.status(200).json({
@@ -25,6 +32,7 @@ const crearReserva = async (req, res) => {
 	const body = req.body;
 
 	const reserva = new Reserva(body);
+	reserva.usuario_id = req.usuario.id;
 	try {
 		const { fecha, exp } = convertDateMilisecToString(
 			reserva.fechaMilsec,
