@@ -26,11 +26,9 @@ const CanchasPost = async (req, res = response) => {
 	const { calificacion, ...body } = req.body;
 
 	if (calificacion > 5) {
-		return res
-			.status(400)
-			.json({
-				error: 'El valor de campoNumber es mayor que el límite permitido.',
-			});
+		return res.status(400).json({
+			error: 'El valor de campoNumber es mayor que el límite permitido.',
+		});
 	}
 
 	const canchaDB = await Cancha.findOne({ nombre_local: body.nombre_local });

@@ -34,12 +34,3 @@ function validarArchivoSubir(req, res, next) {
 
 	next();
 }
-
-// function validarCampos(req, res, next){
-
-//     const error = validationResult(req);
-//     if(!error.isEmpty()) {
-//         return res.status(400).json(error);
-//     }
-//     next();
-// }

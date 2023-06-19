@@ -6,12 +6,13 @@ const cors = require('cors');
 class Server {
 	constructor() {
 		this.app = express();
-		this.port = process.env.PORT || 3000;
+		this.port = process.env.PORT || 3001;
 		this.paths = {
-			usurios: '/api/usuarios',
+			usuarios: '/api/usuarios',
 			canchas: '/api/canchas',
 			reservas: '/api/reservas',
 			uploads: '/api/uploads',
+			pagos: '/api/pagos',
 		};
 
 		this.conectarDB();
@@ -35,16 +36,25 @@ class Server {
 				createParentPath: true,
 			})
 		);
+		this.app.use(express.static('public'));
+		this.app.set('view engine', 'hbs');
 	}
 
 	routes() {
 		// rutas usuarios
+		this.app.use(this.paths.usuarios, require('../routes/usuario'));
 		// rutas canchas
 		this.app.use(this.paths.canchas, require('../routes/cancha'));
 		this.app.use(this.paths.uploads, require('../routes/uploads'));
 		// rutas reservas
+		this.app.use(this.paths.reservas, require('../routes/reserva'));
+		this.app.use(this.paths.pagos, require('../routes/pago'));
 		this.app.get('/', (req, res) => {
 			res.send('ZONA DE GOL - API');
+		});
+
+		this.app.get('/pago', (req, res) => {
+			res.render('pago');
 		});
 	}
 
