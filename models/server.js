@@ -12,7 +12,7 @@ class Server {
       canchas: '/api/canchas',
       reservas: '/api/reservas',
       uploads: '/api/uploads',
-    //   pagos: '/api/pagos',
+      pagos: '/api/pagos',
     };
 
     this.conectarDB();
@@ -48,7 +48,7 @@ class Server {
     this.app.use(this.paths.uploads, require('../routes/uploads'));
     // rutas reservas
     this.app.use(this.paths.reservas, require('../routes/reserva'));
-    // this.app.use(this.paths.pagos, require('../routes/pago'));
+    this.app.use(this.paths.pagos, require('../routes/pago'));
     this.app.get('/', (req, res) => {
       res.send('ZONA DE GOL - API');
     });
