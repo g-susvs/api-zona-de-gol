@@ -25,9 +25,9 @@ const ObtenerCancha = async (req, res = response) => {
 const CanchasPost = async (req, res = response) => {
 	const { calificacion, ...body } = req.body;
 
-	if (calificacion > 5) {
+	if (calificacion > 5 || calificacion < 0) {
 		return res.status(400).json({
-			error: 'El valor de campoNumber es mayor que el límite permitido.',
+			error: 'La calificacion es mayor o menor que el límite permitido.',
 		});
 	}
 
@@ -42,9 +42,12 @@ const CanchasPost = async (req, res = response) => {
 	const data = {
 		...body,
 		nombre: body.nombre_local.toUpperCase(),
+		calificacion,
 	};
 
 	const cancha = new Cancha(data);
+
+	console.log(cancha);
 
 	try {
 		await cancha.save();
