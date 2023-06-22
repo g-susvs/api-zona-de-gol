@@ -23,6 +23,9 @@ router.post(
   '/',
   [
     body('nombre_local', 'El nombre es obligatorio').not().isEmpty(),
+    body('superficie', 'La superficie es obligatoria').not().isEmpty(),
+    body('distrito', 'El distrito es obligatorio').not().isEmpty(),
+    body('direccion', 'La direccion es obligatoria').not().isEmpty(),
     validarCampos,
   ],
   CanchasPost
