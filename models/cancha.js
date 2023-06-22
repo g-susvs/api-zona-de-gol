@@ -8,6 +8,10 @@ const CanchaSchema = new Schema({
 		type: String,
 		required: [true, 'El nombre de el local es obligatiorio'],
 	},
+	superficie: {
+		type: String,
+		required: [true, 'La superficie es obligatoria'],
+	},
 	descripcion: {
 		type: String,
 	},

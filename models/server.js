@@ -9,6 +9,7 @@ class Server {
     this.port = process.env.PORT || 3001;
     this.paths = {
       usuarios: '/api/usuarios',
+      buscar: '/api/buscar',
       canchas: '/api/canchas',
       reservas: '/api/reservas',
       uploads: '/api/uploads',
@@ -46,6 +47,7 @@ class Server {
     // rutas canchas
     this.app.use(this.paths.canchas, require('../routes/cancha'));
     this.app.use(this.paths.uploads, require('../routes/uploads'));
+    this.app.use(this.paths.buscar, require('../routes/buscar'));
     // rutas reservas
     this.app.use(this.paths.reservas, require('../routes/reserva'));
     this.app.use(this.paths.pagos, require('../routes/pago'));
