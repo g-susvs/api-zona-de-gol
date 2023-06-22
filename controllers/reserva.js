@@ -1,4 +1,5 @@
 const Reserva = require('../models/reserva');
+const Cancha = require('../models/cancha');
 
 const getReservaPorId = async (req, res) => {
 	const { id: idReserva } = req.params;
@@ -31,6 +32,14 @@ const getReservaPorId = async (req, res) => {
 const crearReserva = async (req, res) => {
 	const body = req.body;
 
+	const { cancha_id } = req.body;
+
+	const cancha = await Cancha.findById(cancha_id);
+	if (!cancha) {
+		return res.status(404).json({
+			msg: 'La cancha no existe',
+		});
+	}
 	const reserva = new Reserva(body);
 	reserva.usuario_id = req.usuario.id;
 	try {

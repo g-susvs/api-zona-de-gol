@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const CanchaSchema = Schema({
+const CanchaSchema = new Schema({
 	limite_reservacion: {
 		type: Array,
 	},
