@@ -7,9 +7,8 @@ const ReservaSchema = new Schema({
 		required: true,
 	},
 	cancha_id: {
-		// type: Schema.Types.ObjectId,
-		// ref: "Cancha",
-		type: String,
+		type: Schema.Types.ObjectId,
+		ref: 'Cancha',
 		required: true,
 	},
 	fechaMilsec: {
