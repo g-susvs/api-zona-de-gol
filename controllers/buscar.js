@@ -6,7 +6,7 @@ const coleccionesPermitidas = [
     'canchas'
 ]
 
-//por ID
+// por ID
 const buscarCanchas = async(termino='', res=response, precio = 0, duracion = 0)=>{
 
     const esMongoId = ObjectId.isValid(termino);
@@ -39,7 +39,7 @@ const buscarCanchas = async(termino='', res=response, precio = 0, duracion = 0)=
 
   const canchas = await Cancha.find(query);
 
-    //argumentos
+    // argumentos
     // const canchas = await Cancha.find({
     //     $or:[{distrito : regex},{superficie:regex},{direccion : regex},{'precios.precio': precio},{'precios.duracion': duracion}]
     // });
