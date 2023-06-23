@@ -2,11 +2,22 @@ const { response } = require('express');
 const { Cancha } = require('../models');
 
 const CanchasGet = async (req, res = response) => {
-	const { limite = 15, desde = 0 } = req.query;
+	const { limite = 10, desde = 0, superficie, duracion, distrito } = req.query;
+
+	const consulta = {};
+	if (superficie) {
+		consulta.superficie = superficie;
+	}
+	if (duracion) {
+		consulta['precios.duracion'] = parseInt(duracion);
+	}
+	if (distrito) {
+		consulta.distrito = distrito;
+	}
 
 	const [total, canchas] = await Promise.all([
-		Cancha.countDocuments(),
-		Cancha.find().skip(Number(desde)).limit(Number(limite)),
+		Cancha.countDocuments(consulta),
+		Cancha.find(consulta).skip(Number(desde)).limit(Number(limite)),
 	]);
 
 	res.json({
