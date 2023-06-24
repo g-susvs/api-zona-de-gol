@@ -17,10 +17,8 @@ router.post(
 	[
 		validarJWT,
 		body('cancha_id', 'El id no es valido').isMongoId(),
-		// body('cancha_id', 'El id no es valido').notEmpty(),
 		body('fechaMilsec', 'La fecha es requerida').isNumeric(),
 		body('duracion', 'La fecha es requerida').isNumeric(),
-		body('ubicacion', 'La ubicacion es requerida').notEmpty(),
 		body('estado_de_reserva', 'Requerido').notEmpty(),
 		validarCampos,
 	],

@@ -6,7 +6,9 @@ const getReservaPorId = async (req, res) => {
 	const { id: idUsuario } = req.usuario;
 
 	try {
-		const reserva = await Reserva.findById(idReserva).populate('usuario_id');
+		const reserva = await Reserva.findById(idReserva)
+			.populate('cancha_id')
+			.populate('usuario_id', ['id_usuario']);
 		if (!reserva) {
 			return res.status(404).json({
 				msg: 'Not found',
