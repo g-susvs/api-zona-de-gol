@@ -30,7 +30,7 @@ const googleSingIn = async (req, res = response) => {
 			});
 		}
 
-		const token = await generarJWT(usuario.id);
+		const token = await generarJWT(usuario.uid);
 		console.log('Ingresando con usuarios');
 		console.log(usuario);
 		res.json({
