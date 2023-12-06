@@ -31,13 +31,15 @@ const googleSingIn = async (req, res = response) => {
 		}
 
 		const token = await generarJWT(usuario.id);
-
+		console.log('Ingresando con usuarios');
+		console.log(usuario);
 		res.json({
 			msg: 'Todo bien',
 			usuario,
 			token,
 		});
 	} catch (error) {
+		console.log(error);
 		res.status(400).json({
 			ok: false,
 			msg: 'El token no se pudo verificar',
