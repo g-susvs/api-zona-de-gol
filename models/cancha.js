@@ -15,6 +15,7 @@ const CanchaSchema = new Schema({
 	descripcion: {
 		type: String,
 	},
+	// [ {"duracion":90,"precio":50}]
 	precios: {
 		type: Array,
 	},
@@ -26,6 +27,7 @@ const CanchaSchema = new Schema({
 	},
 	imagen: {
 		type: String,
+		default: '',
 	},
 	calificacion: {
 		type: Number,
